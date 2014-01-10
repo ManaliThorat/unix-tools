@@ -10,8 +10,8 @@ public class CutLib {
         String lines[] = input.split("\n");
         for(int i = 0;i<lines.length;i++ ){
             words=lines[i].split(" ");
-            result=result+words[field_no-1];
-            System.out.println(result);
+            result=result+words[field_no-1]+"\r\n";
         }
+        System.out.println(result);
     }
 }
