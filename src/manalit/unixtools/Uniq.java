@@ -1,13 +1,9 @@
 package manalit.unixtools;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * Created by manalit on 1/8/14.
- */
 public class Uniq {
     public static void main(String args[])throws IOException {
         String currentLine,text = "";

@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Cut {
+
+public class ReduceSpace {
     public static void main(String args[])throws IOException {
+        String sortedDAta[];
         String currentLine,text = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(args[0]));
@@ -15,8 +17,12 @@ public class Cut {
         } catch (IOException e) {
             System.out.println(e);
         }
-        CutLib findCount = new CutLib();
-        findCount.cutCount(Integer.parseInt(args[1]),args[2],text);
+        ReduceSpaceLib findCount = new ReduceSpaceLib();
+        sortedDAta = findCount.removeSpaces(text);
+        for (int i = 0; i < sortedDAta.length; i++) {
+            System.out.println(sortedDAta[i]);
+        }
     }
-
 }
+
+

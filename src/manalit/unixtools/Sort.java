@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * Created by manalit on 1/9/14.
- */
 public class Sort {
     public static void main(String args[])throws IOException {
         String sortedDAta[];
