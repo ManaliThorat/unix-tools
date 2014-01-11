@@ -18,13 +18,17 @@ public class Sort {
             System.out.println(e);
         }
         SortLib findCount = new SortLib();
-        sortedDAta = findCount.sortData(text);
-        for (String line : sortedDAta) {
-            System.out.println(line);
+        if(args.length == 2 && (0 == args[1].compareTo("-r"))){
+            reverseDAta = findCount.reverseData(text);
+            for (String s : reverseDAta) {
+                System.out.println(s);
+            }
         }
-        reverseDAta = findCount.reverseData(text);
-        for (String s : reverseDAta) {
-            System.out.println(s);
+        else {
+            sortedDAta = findCount.sortData(text);
+            for (String line : sortedDAta) {
+                System.out.println(line);
+            }
         }
     }
 }

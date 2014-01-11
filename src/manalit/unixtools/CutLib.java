@@ -7,7 +7,10 @@ public class CutLib {
         String lines[] = input.split("\n");
         for(int i = 0;i<lines.length;i++ ){
             words=lines[i].split(delimeter);
-            result=result+words[field_no-1]+"\r\n";
+            if(words.length <= field_no)
+                result = result+"\r\n";
+            else
+                result=result+words[field_no-1]+"\r\n";
         }
         System.out.println(result);
     }
