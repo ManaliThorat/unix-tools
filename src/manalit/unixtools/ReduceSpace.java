@@ -6,15 +6,9 @@ import java.io.*;
 public class ReduceSpace {
     public static void main(String args[])throws IOException {
         String sortedDAta[];
-        String currentLine,text = "";
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(args[0]));
-            while ((currentLine = br.readLine()) != null) {
-                text += currentLine+"\r\n";
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        String text;
+        ReadFile readFile = new ReadFile();
+        text =readFile.read(args[0]);
         ReduceSpaceLib findCount = new ReduceSpaceLib();
         sortedDAta = findCount.removeSpaces(text);
         for (int i = 0; i < sortedDAta.length; i++) {
@@ -30,8 +24,3 @@ public class ReduceSpace {
 
     }
 }
-
-//FileWriter fw = new FileWriter(file.getAbsoluteFile());
-//BufferedWriter bw = new BufferedWriter(fw);
-//bw.write(content);
-//        bw.close();
