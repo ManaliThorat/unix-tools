@@ -9,8 +9,8 @@ public class ReduceSpace {
         String text;
         ReadFile readFile = new ReadFile();
         text =readFile.read(args[0]);
-        ReduceSpaceLib findCount = new ReduceSpaceLib();
-        sortedDAta = findCount.removeSpaces(text);
+        ReduceSpaceLib reduceSpace = new ReduceSpaceLib();
+        sortedDAta = reduceSpace.removeSpaces(text);
         for (int i = 0; i < sortedDAta.length; i++) {
             System.out.println(sortedDAta[i]);
         }

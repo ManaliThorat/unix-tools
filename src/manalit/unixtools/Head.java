@@ -13,10 +13,12 @@ public class Head {
         else{
             size = 10;
         }
+        StringBuilder result;
         ReadFile readFile = new ReadFile();
             text =readFile.read(args[0]);
-        HeadLib findCount = new HeadLib();
-        findCount.headCount(size,text);
+        HeadLib head = new HeadLib();
+        result = head.headCount(size,text);
+        System.out.println(result);
     }
 }
 

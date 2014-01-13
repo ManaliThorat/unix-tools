@@ -11,15 +11,15 @@ public class Sort {
         String text;
         ReadFile readFile = new ReadFile();
         text =readFile.read(args[0]);
-        SortLib findCount = new SortLib();
+        SortLib sort = new SortLib();
         if(args.length == 2 && (0 == args[1].compareTo("-r"))){
-            reverseDAta = findCount.reverseData(text);
+            reverseDAta = sort.reverseData(text);
             for (String s : reverseDAta) {
                 System.out.println(s);
             }
         }
         else {
-            sortedDAta = findCount.sortData(text);
+            sortedDAta = sort.sortData(text);
             for (String line : sortedDAta) {
                 System.out.println(line);
             }
