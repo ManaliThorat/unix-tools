@@ -13,7 +13,7 @@ public class Head {
         else{
             size = 10;
         }
-        StringBuilder result;
+        String result;
         ReadFile readFile = new ReadFile();
             text =readFile.read(args[0]);
         HeadLib head = new HeadLib();
