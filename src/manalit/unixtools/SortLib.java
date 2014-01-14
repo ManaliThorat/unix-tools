@@ -5,16 +5,25 @@ import java.util.Collections;
 import java.util.List;
 
 public class SortLib {
-    public String[] sortData(String input){
+    public String sortData(String input){
         String lines[] = input.split("\n");
         Arrays.sort(lines);
-        return lines;
+        StringBuilder result = new StringBuilder();
+        for (String line : lines) {
+            result.append(line).append("\r\n");
+        }
+        return result.toString();
     }
-    public String[] reverseData(String input){
-        String lines[] = sortData(input);
+    public String reverseData(String input){
+        String data = sortData(input);
+        String[] lines = data.split("\r\n");
+        StringBuilder result = new StringBuilder();
         List<String> strList = Arrays.asList(lines);
         Collections.reverse(strList);
         lines = strList.toArray(new String[strList.size()]);
-        return lines;
+        for (String line : lines) {
+            result.append(line).append("\r\n");
+        }
+        return result.toString();
     }
 }

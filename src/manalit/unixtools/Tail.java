@@ -6,7 +6,7 @@ public class Tail {
     public static void main(String args[])throws IOException {
         int size;
         String text;
-        StringBuilder result;
+        String result;
         if(args.length == 2){
             size =Integer.parseInt(args[1].substring(1));
         }

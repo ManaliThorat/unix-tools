@@ -11,8 +11,6 @@ public class HeadLibTest {
         String expected = "manali\r\nhow r u\r\nwhere r u\r\ni m here\r\n";
         HeadLib head = new HeadLib();
         String actual =  head.headCount(size,data);
-        System.out.println(expected);
-        System.out.println(actual);
         assertEquals(expected, actual);
     }
 }
