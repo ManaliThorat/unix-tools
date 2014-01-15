@@ -10,7 +10,11 @@ public class Head {
 
         String properArgv[] = headcli.getArguments(args);
         String fileData = fs.read(properArgv[0]);
-        int size = Integer.parseInt(properArgv[1].substring(1));
+        int size;
+        if(properArgv[1] != null)
+            size = Integer.parseInt(properArgv[1].substring(1));
+        else
+            size = 10;
         String columnData = head.headCount(size, fileData);
         System.out.println(columnData);
     }
@@ -20,7 +24,7 @@ public class Head {
         for (int i = 0; i < arg.length; i++) {
             if (Head.isNumber(arg[i]))
                 options[1] = arg[i];
-            if (!Head.isFile(arg[i]))
+            if (!Head.isNumber(arg[i]))
                 options[0] = arg[i];
         }
         return options;
@@ -29,11 +33,6 @@ public class Head {
     static boolean isNumber(String arg) {
         return arg.matches("-.*");
     }
-
-    static boolean isFile(String arg) {
-        return arg.matches("-.*");
-    }
-
 }
 
 
