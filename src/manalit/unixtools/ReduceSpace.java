@@ -4,11 +4,11 @@ import java.io.*;
 
 
 public class ReduceSpace {
-    public static void main(String args[])throws IOException {
+    public static void main(String args[]) throws IOException {
         String sortedDAta;
         String text;
         ReadFile readFile = new ReadFile();
-        text =readFile.read(args[0]);
+        text = readFile.read(args[0]);
         ReduceSpaceLib reduceSpace = new ReduceSpaceLib();
         sortedDAta = reduceSpace.removeSpaces(text);
         System.out.println(sortedDAta);

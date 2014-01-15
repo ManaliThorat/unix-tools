@@ -11,7 +11,7 @@ public class UniqLibTest {
     @Test
     public void testGetUniqueLines() throws Exception {
         String text = "Ram\nSam\nSam\nTam\nTum";
-        String expected = "Ram\nSam\nTum\n";
+        String expected = "Ram\r\nSam\r\nTam\r\n";
 
         UniqLib uniq = new UniqLib();
         StringBuilder result = uniq.uniqData(text);

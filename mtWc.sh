@@ -1,1 +1,1 @@
-java -cp out/artifacts/UnixTools_jar/unixTools.jar manalit.unixtools.wc $1
+java -cp $UNIX/unixTools.jar manalit.unixtools.WC "${@}"

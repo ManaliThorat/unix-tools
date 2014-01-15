@@ -3,15 +3,16 @@ package manalit.unixtools;
 import java.io.IOException;
 
 public class Head {
-    public static void main(String args[])throws IOException {
-        Head headcli= new Head();
+    public static void main(String args[]) throws IOException {
+        Head headcli = new Head();
         ReadFile fs = new ReadFile();
         HeadLib head = new HeadLib();
 
         String properArgv[] = headcli.getArguments(args);
         String fileData = fs.read(properArgv[0]);
         int size;
-        if(properArgv[1] != null)
+
+        if (properArgv[1] != null)
             size = Integer.parseInt(properArgv[1].substring(1));
         else
             size = 10;

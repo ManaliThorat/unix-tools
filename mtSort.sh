@@ -1,1 +1,1 @@
-java -cp out/artifacts/UnixTools_jar/unixTools.jar manalit.unixtools.Sort $1 $2
+java -cp $UNIX/unixTools.jar manalit.unixtools.Sort $1 $2

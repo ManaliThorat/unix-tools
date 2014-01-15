@@ -9,7 +9,7 @@ import  static org.junit.Assert.assertEquals;
 public class TailLibTest {
     @Test
     public void testTailCount() throws Exception {
-        String data = "manali\r\nhow r u\r\nwhere r u\r\ni m here\r\nwhat r u doing\r\n what to do";
+        String data = "manali\nhow r u\nwhere r u\ni m here\nwhat r u doing\nwhat to do";
         int size = 4;
         String expected = "where r u\r\ni m here\r\nwhat r u doing\r\nwhat to do\r\n";
         TailLib tail = new TailLib();

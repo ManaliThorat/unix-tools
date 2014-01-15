@@ -3,15 +3,15 @@ package manalit.unixtools;
 import java.io.IOException;
 
 public class Tail {
-    public static void main(String args[])throws IOException {
-        Tail tailcli= new Tail();
+    public static void main(String args[]) throws IOException {
+        Tail tailcli = new Tail();
         ReadFile fs = new ReadFile();
         TailLib tail = new TailLib();
 
         String properArgv[] = tailcli.getArguments(args);
         String fileData = fs.read(properArgv[0]);
         int size;
-        if(properArgv[1] != null)
+        if (properArgv[1] != null)
             size = Integer.parseInt(properArgv[1].substring(1));
         else
             size = 10;

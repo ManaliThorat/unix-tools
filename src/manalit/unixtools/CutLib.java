@@ -1,17 +1,16 @@
 package manalit.unixtools;
 
 public class CutLib {
-    public StringBuilder cutCount(int field_no,String delimeter,String input){
-        String words[];
-        StringBuilder res = new StringBuilder();
+    public String cutCount(int field_no, String delimeter, String input) {
+        StringBuilder result = new StringBuilder();
         String lines[] = input.split("\n");
-        for (String line : lines) {
-            words = line.split(delimeter);
-            if(words.length < field_no)
-                res.append("\r\n");
-            else
-                res.append(words[field_no-1]).append("\r\n");
+        if (lines.length < field_no) return result.toString();
+        String words_a_line[];
+        for (int counter = 0; counter < lines.length; counter++) {
+            words_a_line = lines[counter].split(delimeter);
+            result.append(words_a_line[field_no - 1]);
+            result.append("\n");
         }
-        return res;
+        return result.toString();
     }
 }

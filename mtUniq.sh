@@ -1,1 +1,1 @@
-java -cp out/artifacts/UnixTools_jar/unixTools.jar manalit.unixtools.Uniq $1
+java -cp $UNIX/unixTools.jar manalit.unixtools.Uniq $1
