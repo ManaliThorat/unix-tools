@@ -4,26 +4,38 @@ import java.io.IOException;
 
 public class Head {
     public static void main(String args[])throws IOException {
-        int size = 0;
-        String text;
-        String result;
-        if(args.length == 2){
-            for (int i = 0; i <args.length ; i++) {
-                if(args[i].startsWith("-"))
-                    size =Integer.parseInt(args[1].substring(1));
+        Head headcli= new Head();
+        ReadFile fs = new ReadFile();
+        HeadLib head = new HeadLib();
 
-            }
-        }
-       else
-            size = 10;
-
-        ReadFile readFile = new ReadFile();
-        text =readFile.read(args[0]);
-        HeadLib tail = new HeadLib();
-        result = tail.headCount(size, text);
-        System.out.println(result);
+        String properArgv[] = headcli.getArguments(args);
+        String fileData = fs.read(properArgv[0]);
+        int size = Integer.parseInt(properArgv[1].substring(1));
+        String columnData = head.headCount(size, fileData);
+        System.out.println(columnData);
     }
+
+    String[] getArguments(String[] arg) {
+        String options[] = new String[2];
+        for (int i = 0; i < arg.length; i++) {
+            if (Head.isNumber(arg[i]))
+                options[1] = arg[i];
+            if (!Head.isFile(arg[i]))
+                options[0] = arg[i];
+        }
+        return options;
+    }
+
+    static boolean isNumber(String arg) {
+        return arg.matches("-.*");
+    }
+
+    static boolean isFile(String arg) {
+        return arg.matches("-.*");
+    }
+
 }
+
 
 
 

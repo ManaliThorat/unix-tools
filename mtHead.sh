@@ -1,1 +1,1 @@
-java -cp out/artifacts/UnixTools_jar/unixTools.jar manalit.unixtools.Head $1
+java -cp out/artifacts/UnixTools_jar/unixTools.jar manalit.unixtools.Head "$1" "$2"
