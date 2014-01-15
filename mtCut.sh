@@ -1,0 +1,1 @@
+java -cp out/artifacts/UnixTools_jar/unixTools.jar manalit.unixtools.Cut $1 $2 $3
