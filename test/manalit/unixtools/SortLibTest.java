@@ -28,4 +28,21 @@ public class SortLibTest {
         String actual = result.toString();
         assertEquals(expected,actual);
     }
+    @Test
+    public void testSortForEmptyString() throws Exception {
+        String expected = "\r\n";
+
+        SortLib sort = new SortLib();
+        String result = sort.sortData("");
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testReverseSortForEmptyString() throws Exception {
+        String expected = "";
+
+        SortLib sort = new SortLib();
+        String result = sort.reverseData("");
+        assertEquals(expected, result);
+    }
 }
