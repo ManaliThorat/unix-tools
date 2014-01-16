@@ -18,4 +18,14 @@ public class UniqLibTest {
         String actual = result.toString();
         assertEquals(expected,actual);
     }
+    @Test
+    public void testGivesEmptyStringWhenInputIsEmpty() throws Exception {
+        String text = "";
+        String expected = "";
+
+        UniqLib uniq = new UniqLib();
+        StringBuilder result = uniq.uniqData(text);
+        String actual = result.toString();
+        assertEquals(expected,actual);
+    }
 }
