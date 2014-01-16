@@ -1,4 +1,7 @@
-package manalit.unixtools;
+package manalit.unixtools.cli;
+
+import manalit.unixtools.CutLib;
+import manalit.unixtools.ReadFile;
 
 public class Cut {
     public static void main(String[] args) {

@@ -1,4 +1,7 @@
-package manalit.unixtools;
+package manalit.unixtools.cli;
+
+import manalit.unixtools.ReadFile;
+import manalit.unixtools.TailLib;
 
 import java.io.IOException;
 

@@ -1,4 +1,7 @@
-package manalit.unixtools;
+package manalit.unixtools.cli;
+
+import manalit.unixtools.Count;
+import manalit.unixtools.ReadFile;
 
 import java.io.*;
 
