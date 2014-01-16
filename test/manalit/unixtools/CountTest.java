@@ -19,7 +19,7 @@ public class CountTest {
     public void testWordCount() throws Exception {
         Count count = new Count();
         int expected = 1;
-        int actual = count.lineCount("manali");
+        int actual = count.wordCount("manali");
         assertEquals(expected,actual);
     }
 
@@ -27,7 +27,14 @@ public class CountTest {
     public void testLineCount() throws Exception {
         Count count = new Count();
         int expected = 1;
-        int actual = count.wordCount("manali");
+        int actual = count.lineCount("manali");
+        assertEquals(expected,actual);
+    }
+    @Test
+    public void testMultipleLineCount() throws Exception {
+        Count count = new Count();
+        int expected = 3;
+        int actual = count.lineCount("manali\r\nshital\r\nkajal");
         assertEquals(expected,actual);
     }
 }
