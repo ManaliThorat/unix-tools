@@ -16,4 +16,25 @@ public class ReduceSpaceLibTest {
         String actual =  reduce.removeSpaces(data);
         assertEquals(expected, actual);
     }
+    @Test
+    public void spaceReducerForSingleLine() throws Exception {
+        String input = "I          am                here.";
+        ReduceSpaceLib reduce = new ReduceSpaceLib();
+
+        String expected = "I am here.";
+        String actual =  reduce.removeSpaces(input);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void spaceReducerForEmptyInput() throws Exception {
+        String input = "";
+        ReduceSpaceLib reduce = new ReduceSpaceLib();
+
+        String expected = "";
+        String actual =  reduce.removeSpaces(input);
+
+        assertEquals(expected, actual);
+    }
 }
