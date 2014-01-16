@@ -12,6 +12,7 @@ public class CutLibTest {
     public void testCutCount() throws Exception {
         String text = "manali T\nShital M";
         String expected = "manali\nShital\n";
+
         CutLib uniq = new CutLib();
         String result = uniq.cutCount(1, " ", text);
         String actual = result.toString();

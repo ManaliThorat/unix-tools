@@ -1,7 +1,5 @@
 package manalit.unixtools;
 
-import java.io.IOException;
-
 public class Cut {
     public static void main(String[] args) {
         Cut cutclient = new Cut();

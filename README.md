@@ -1,5 +1,7 @@
 Unix-Tools
 ==========
+install
+variable `UNIX` as the path to the given sh files and jar file
 
 ## WC
 mtWc file-name
