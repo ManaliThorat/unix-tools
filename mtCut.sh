@@ -1,1 +1,1 @@
-java -cp $UNIX/unixTools.jar manalit.unixtools.Cut "${@}"
+java -cp $UNIX/lib/unix-tools.jar manalit.unixtools.cli.Cut "${@}"

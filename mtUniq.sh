@@ -1,1 +1,1 @@
-java -cp $UNIX/unixTools.jar manalit.unixtools.Uniq $1
+java -cp $UNIX/lib/unix-tools.jar manalit.unixtools.cli.Uniq $1

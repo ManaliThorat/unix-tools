@@ -1,6 +1,9 @@
 <project name = "unix-tools">
     <target name="clean">
         <delete dir = "classes"></delete>
+        <delete dir = "unix-tools"></delete>
+        <delete dir = "unix-tools/lib"></delete>
+        <delete dir = "unix-tools/bin"></delete>
     </target>
     <target name = "compile">
         <mkdir dir = "classes"></mkdir>
@@ -11,4 +14,23 @@
         <mkdir dir="unix-tools/lib"></mkdir>
         <mkdir dir = "unix-tools/bin"></mkdir>
     </target>
+    <target name="createJar" depends="createDir">
+        <jar destfile = "unix-tools/lib/unix-tools.jar" basedir = "classes"></jar>
+    </target>
+    <target name="copyShells" depends="createJar">
+        <copy file = "mtSort.sh" todir = "unix-tools/bin"></copy>
+        <copy file = "mtHead.sh" todir = "unix-tools/bin"></copy>
+        <copy file = "mtTail.sh" todir = "unix-tools/bin"></copy>
+        <copy file = "mtUniq.sh" todir = "unix-tools/bin"></copy>
+        <copy file = "mtWc.sh" todir = "unix-tools/bin"></copy>
+        <copy file = "mtCut.sh" todir = "unix-tools/bin"></copy>
+        <copy file = "mtReducer.sh" todir = "unix-tools/bin"></copy>
+    </target>
+    <target name="copyReadme" depends="copyShells">
+        <copy file = "README.md" todir = "unix-tools"></copy>
+    </target>
+    <target name = "createZip" depends="copyReadme">
+        <zip zipfile = "unix-tools.zip" basedir = "unix-tools"></zip>
+    </target>
+
 </project>
