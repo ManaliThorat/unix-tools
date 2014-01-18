@@ -1,36 +1,95 @@
-<project name = "unix-tools">
-    <target name="clean">
-        <delete dir = "classes"></delete>
-        <delete dir = "unix-tools"></delete>
-        <delete dir = "unix-tools/lib"></delete>
-        <delete dir = "unix-tools/bin"></delete>
+<!--<project name = "unix-tools">-->
+    <!--<target name="clean">-->
+        <!--<delete dir = "classes"></delete>-->
+        <!--<delete dir = "unix-tools"></delete>-->
+        <!--<delete dir = "unix-tools/lib"></delete>-->
+        <!--<delete dir = "unix-tools/bin"></delete>-->
+    <!--</target>-->
+    <!--<target name = "compile">-->
+        <!--<mkdir dir = "classes"></mkdir>-->
+        <!--<javac srcdir = "src" destdir = "classes"></javac>-->
+    <!--</target>-->
+    <!--<target name = "createDir" depends = "compile">-->
+        <!--<mkdir dir = "unix-tools"></mkdir>-->
+        <!--<mkdir dir="unix-tools/lib"></mkdir>-->
+        <!--<mkdir dir = "unix-tools/bin"></mkdir>-->
+    <!--</target>-->
+    <!--<target name="createJar" depends="createDir">-->
+        <!--<jar destfile = "unix-tools/lib/unix-tools.jar" basedir = "classes"></jar>-->
+    <!--</target>-->
+    <!--<target name="copyShells" depends="createJar">-->
+        <!--<copy file = "mtSort.sh" todir = "unix-tools/bin"></copy>-->
+        <!--<copy file = "mtHead.sh" todir = "unix-tools/bin"></copy>-->
+        <!--<copy file = "mtTail.sh" todir = "unix-tools/bin"></copy>-->
+        <!--<copy file = "mtUniq.sh" todir = "unix-tools/bin"></copy>-->
+        <!--<copy file = "mtWc.sh" todir = "unix-tools/bin"></copy>-->
+        <!--<copy file = "mtCut.sh" todir = "unix-tools/bin"></copy>-->
+        <!--<copy file = "mtReducer.sh" todir = "unix-tools/bin"></copy>-->
+    <!--</target>-->
+    <!--<target name="copyReadme" depends="copyShells">-->
+        <!--<copy file = "README.md" todir = "unix-tools"></copy>-->
+    <!--</target>-->
+    <!--<target name = "createZip" depends="copyReadme">-->
+        <!--<zip zipfile = "unix-tools.zip" basedir = "unix-tools"></zip>-->
+    <!--</target>-->
+
+<!--</project>-->
+
+
+<project name="unix-tools" basedir=".">
+    <property name="tst-dir" location="test"/>
+    <property name="build" location="build"/>
+    <property name="src" location="src"/>
+    <target name="init">
+        <mkdir dir="build/test"/>
+        <mkdir dir="build/src"/>
     </target>
-    <target name = "compile">
-        <mkdir dir = "classes"></mkdir>
-        <javac srcdir = "src" destdir = "classes"></javac>
+    <target name="compile-source" depends="init">
+        <javac srcdir="src" destdir="build/src" includeantruntime="false"/>
     </target>
-    <target name = "createDir" depends = "compile">
-        <mkdir dir = "unix-tools"></mkdir>
-        <mkdir dir="unix-tools/lib"></mkdir>
-        <mkdir dir = "unix-tools/bin"></mkdir>
+    <target name="compile-tests" depends="compile-source">
+        <javac srcdir="test" destdir="build/test"
+               classpath="test,build/src"/>
     </target>
-    <target name="createJar" depends="createDir">
-        <jar destfile = "unix-tools/lib/unix-tools.jar" basedir = "classes"></jar>
-    </target>
-    <target name="copyShells" depends="createJar">
-        <copy file = "mtSort.sh" todir = "unix-tools/bin"></copy>
-        <copy file = "mtHead.sh" todir = "unix-tools/bin"></copy>
-        <copy file = "mtTail.sh" todir = "unix-tools/bin"></copy>
-        <copy file = "mtUniq.sh" todir = "unix-tools/bin"></copy>
-        <copy file = "mtWc.sh" todir = "unix-tools/bin"></copy>
-        <copy file = "mtCut.sh" todir = "unix-tools/bin"></copy>
-        <copy file = "mtReducer.sh" todir = "unix-tools/bin"></copy>
-    </target>
-    <target name="copyReadme" depends="copyShells">
-        <copy file = "README.md" todir = "unix-tools"></copy>
-    </target>
-    <target name = "createZip" depends="copyReadme">
-        <zip zipfile = "unix-tools.zip" basedir = "unix-tools"></zip>
+    <target name="run-tests" depends="compile-tests">
+        <java classpath="lib/junit-4.10.jar;build/src;build/test" classname="org.junit.runner.JUnitCore">
+            <arg value="manalit.unixtools.CountTest"/>
+            <arg value="manalit.unixtools.CutLibTest"/>
+            <arg value="manalit.unixtools.HeadLibTest"/>
+            <arg value="manalit.unixtools.ReduceSpaceLibTest"/>
+            <arg value="manalit.unixtools.SortLibTest"/>
+            <arg value="manalit.unixtools.TailLibTest"/>
+            <arg value="manalit.unixtools.UniqLibTest"/>
+        </java>
     </target>
 
+    <target name="createJar" depends="run-tests">
+        <mkdir dir="unix-tools_dist/lib"/>
+        <mkdir dir="unix-tools_dist/bin"/>
+        <jar destfile="unix-tools_dist/lib/unix-tools.jar" basedir="build/src"/>
+    </target>
+
+    <target name="copyScripts" depends="createJar">
+        <copy file="mtCut.sh" todir="unix-tools_dist/bin"/>
+        <copy file="mtHead.sh" todir="unix-tools_dist/bin"/>
+        <copy file="mtSort.sh" todir="unix-tools_dist/bin"/>
+        <copy file="mtReducer.sh" todir="unix-tools_dist/bin"/>
+        <copy file="mtTail.sh" todir="unix-tools_dist/bin"/>
+        <copy file="mtUniq.sh" todir="unix-tools_dist/bin"/>
+        <copy file="mtWc.sh" todir="unix-tools_dist/bin"/>
+    </target>
+
+    <target name="copyReadme" depends="copyScripts">
+        <copy file="README.md" todir="unix-tools_dist"/>
+    </target>
+
+    <target name="dist" depends="copyReadme">
+        <zip zipfile="unix-tools.zip" basedir="unix-tools_dist"/>
+    </target>
+
+    <target name="clear">
+        <delete dir="build"/>
+        <delete dir="unix-tools_dist"/>
+        <delete file="unix-tools.zip"/>
+    </target>
 </project>
