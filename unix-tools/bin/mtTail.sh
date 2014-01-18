@@ -1,1 +1,0 @@
-java -cp $UNIX/lib/unix-tools.jar manalit.unixtools.cli.Tail $1 $2

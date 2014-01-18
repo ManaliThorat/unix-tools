@@ -1,3 +1,7 @@
 .idea
 *.class
 *.iml
+*.jar
+*.zip
+./build/
+./out/
