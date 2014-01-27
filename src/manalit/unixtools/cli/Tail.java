@@ -3,7 +3,9 @@ package manalit.unixtools.cli;
 import manalit.unixtools.ReadFile;
 import manalit.unixtools.TailLib;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Properties;
 
 public class Tail {
     public static void main(String args[]) throws IOException {
@@ -16,8 +18,16 @@ public class Tail {
         int size;
         if (properArgv[1] != null)
             size = Integer.parseInt(properArgv[1].substring(1));
-        else
-            size = 10;
+        else {
+            try {
+                FileReader reader = new FileReader("config.properties");
+                Properties properties = new Properties();
+                properties.load(reader);
+                size = Integer.parseInt(properties.getProperty("default-tail-lines"));
+            } catch (IOException e) {
+                size = 10;
+            }
+        }
         String columnData = tail.tailCount(size, fileData);
         System.out.println(columnData);
     }

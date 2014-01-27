@@ -3,7 +3,9 @@ package manalit.unixtools.cli;
 import manalit.unixtools.HeadLib;
 import manalit.unixtools.ReadFile;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Properties;
 
 public class Head {
     public static void main(String args[]) throws IOException {
@@ -17,8 +19,16 @@ public class Head {
 
         if (properArgv[1] != null)
             size = Integer.parseInt(properArgv[1].substring(1));
-        else
-            size = 10;
+        else {
+            try {
+                FileReader reader = new FileReader("config.properties");
+                Properties properties = new Properties();
+                properties.load(reader);
+                size = Integer.parseInt(properties.getProperty("default-head-lines"));
+            } catch (IOException e) {
+                size = 10;
+            }
+        }
         String columnData = head.headCount(size, fileData);
         System.out.println(columnData);
     }
