@@ -21,7 +21,8 @@ public class Head {
             size = Integer.parseInt(properArgv[1].substring(1));
         else {
             try {
-                FileReader reader = new FileReader("config.properties");
+                String user_config = System.getenv("UNIX") +  "/config.properties";
+                FileReader reader = new FileReader(user_config);
                 Properties properties = new Properties();
                 properties.load(reader);
                 size = Integer.parseInt(properties.getProperty("default-head-lines"));
